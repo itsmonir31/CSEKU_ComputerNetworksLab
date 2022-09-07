@@ -1,34 +1,36 @@
-from time import *
 import threading
+import time
+from tkinter import Y
 
-def countdown():
-    global timer_, forcekill
+data_ = "AASDFG"
+ack = "011001111"
+ack_passer = 0
+data_passer = 0
 
-    timer_ = 5
-
+def run(stop):
     for x in range(5):
-        timer_ = timer_ - 1
-        sleep(1)
-        if forcekill:
+        # print("Data->"+ data_[data_passer] + "---" + x+1)
+        print("Data->", data_[data_passer],"---", x+1)
+        time.sleep(1)
+        if stop():
+            print("Acknowledged")
             break
+                 
+def main():
+    global ack_passer, data_passer
+    stop_threads = False
+    t1 = threading.Thread(target = run, args =(lambda : stop_threads, ))
+    t1.start()
+    # time.sleep(1)\
+    # x = input()
+    # print(ack[ack_passer])
+    if ack[ack_passer] == '1':
+        data_passer += 1
+        stop_threads = True
+        # print(ack_passer)
+    t1.join()
+    print('\n')
+    ack_passer += 1
 
-    print("Out o time", timer_)
-
-for x in range(5):
-    forcekill = False
-    countdown_thread = threading.Thread(target = countdown)
-    countdown_thread.start()
-
-    while timer_ > 0:
-        print("ppopoj", x)
-        sleep(1)
-        # if x == 5:
-        #     countdown_thread.join()
-        x = input()
-        if x=='y':
-            forcekill = True
-            # timer_ = 0;
-            # print(x)
-            countdown_thread.join()
-            break
-
+for x in range(len(ack)):
+    main()
