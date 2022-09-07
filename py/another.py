@@ -1,14 +1,9 @@
-
-# Python program killing
-# threads using stop
-# flag
- 
 import threading
 import time
 from tkinter import Y
 
 data_ = "AASDFG"
-ack = "110001111"
+ack = "011001111"
 ack_passer = 0
 data_passer = 0
 
