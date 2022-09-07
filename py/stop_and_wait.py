@@ -2,7 +2,7 @@ import threading
 import time
 from tkinter import Y
 
-data_ = "AASDFG"
+data_ = "UvWxYz"
 ack = "011001111"
 ack_passer = 0
 data_passer = 0
@@ -10,7 +10,7 @@ data_passer = 0
 def run(stop):
     for x in range(5):
         # print("Data->"+ data_[data_passer] + "---" + x+1)
-        print("Data->", data_[data_passer],"---", x+1)
+        print("Data->", data_[data_passer],"--- Waitting ", x+1, "sec")
         time.sleep(1)
         if stop():
             print("Acknowledged")
