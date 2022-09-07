@@ -1,0 +1,3 @@
+db:	moniruz1_cnLabmoniruz1_cnLab
+user:	moniruz1_cn
+pwd:	IPwyEF1;LyLD
