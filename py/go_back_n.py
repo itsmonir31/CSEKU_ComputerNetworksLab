@@ -13,7 +13,7 @@ acknoledged_data = 0
 
 def run(stop):
     global data_passer, acknoledged_data 
-    delay_time = 5
+    delay_time = 6
     for x in range(delay_time):
         # print("Data->", data_[data_passer],"---", x+1)
         print("\t\t", x+1, "sec", end =" . . . ")
@@ -59,6 +59,16 @@ def send_window(start):
     data_passer += 4
 
 
-send_window(0)
-for x in range(len(ack)):
-    main()
+
+if WINDOW_SIZE > 0 :
+    send_window(0)
+# for x in range(len(ack)):
+#     main()
+
+    x = 0
+    while x < len(ack):
+        main()
+        x += 1
+
+else:
+    print("Window size must be positive")
